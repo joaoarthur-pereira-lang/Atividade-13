@@ -16,3 +16,24 @@ document.getElementById("toggle").onclick = () => {
 
     document.getElementById("mensagem").innerHTML = "";
 };
+
+document.getElementById("form-login").onsubmit = (e) => {
+    e.preventDefault();
+
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    let mensagem = document.getElementById("mensagem");
+
+    mensagem.innerHTML = "";
+
+    if (!email.includes("@") || !email.includes(".")) {
+        mensagem.innerHTML =
+            "<div class='erro'><p>Email inválido!</p></div>";
+        return;
+    }
+
+    if (senha.length < 4) {
+        mensagem.innerHTML =
+            "<div class='erro'><p>Senha muito curta!</p></div>";
+        return;
+    }
