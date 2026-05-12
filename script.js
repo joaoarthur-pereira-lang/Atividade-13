@@ -37,3 +37,23 @@ document.getElementById("form-login").onsubmit = (e) => {
             "<div class='erro'><p>Senha muito curta!</p></div>";
         return;
     }
+    
+    if (cadastro) {
+        localStorage.setItem(email, senha);
+
+        mensagem.innerHTML =
+            "<div class='sucesso'><p>Cadastrado com sucesso!</p></div>";
+    } else {
+        let salva = localStorage.getItem(email);
+
+        if (salva === senha) {
+            mensagem.innerHTML =
+                "<div class='sucesso'><p>Login com sucesso!</p></div>";
+        } else {
+            mensagem.innerHTML =
+                "<div class='erro'><p>Dados incorretos!</p></div>";
+        }
+    }
+
+    document.getElementById("form-login").reset();
+};
